@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  long long t;
+  cin>>t;
+  while(t--)
+  {
+    long long a,b;
+    cin>>a>>b;
+    if(b>a)
+    swap(a,b);
+    if((2*a-b)%3==0 && (2*b-a)>=0 && (2*b-a)%3==0)
+    cout<<"YES"<<"\n";
+    else
+    cout<<"NO"<<"\n";
+  }
+}
