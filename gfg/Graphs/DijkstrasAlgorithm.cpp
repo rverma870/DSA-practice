@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+//To calculat shortest distance in non negative weighted cycle graph.
 void GraphInput(int edge,vector<pair<int,int>>adj[])
 {
   for(int i=0; i<edge ; i++)
@@ -26,19 +26,21 @@ void printGraph(vector<pair<int,int>>adj[], int nodes)
 vector<int>SourceToDestination(int V, vector<pair<int,int>> adj[])
 {
   vector<int>dis(V,INT_MAX);
-  priority_queue<int ,vector<int> , greater<int>>q;
-  q.push(0);
+  priority_queue<pair<int,int> ,vector<pair<int,int>> , greater<pair<int,int>>>q;
+  q.push({0,0});//distance,source;
+  //NO need for visited array
   dis[0]=0;
   while(!q.empty())
   {
-    int temp=q.top();
+    int mindist=q.top().first;
+    int prev=q.top().second;
     q.pop();
-    for(auto x : adj[temp])
+    for(auto x : adj[prev])
     {
-      if(dis[temp] + x.second < dis[x.first])
+      if(dis[prev] + x.second < dis[x.first])
       {
-         dis[x.first] = dis[temp] + x.second;
-         q.push(x.first);
+         dis[x.first] = dis[prev] + x.second;
+         q.push({dis[x.first], x.first});
       }
     }
   }

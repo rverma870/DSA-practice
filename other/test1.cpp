@@ -1,56 +1,39 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-void GraphInput(int edge,vector<pair<int,int>>adj[])
+long long dp[76];
+long long solve(int curr,int buf,int n, int N)
 {
-  for(int i=0; i<edge ; i++)
-  {
-    int u,v,w;
-    cin>>u>>v>>w;
-    adj[u].push_back({v,w});
-    adj[v].push_back({u,w});
-  }
+  if(dp[n]!=0)
+    return dp[n];
+  if(n==N)
+    return curr;
+  long long left=0,right=0;
+  if(N-n>2)
+    left = solve(2*curr,curr,n+3,N);
+  else
+    left = curr;
+
+  if(buf!=0)
+    right= solve(curr+buf,buf,n+1,N);
+  else
+    right = solve(curr+1,1,n+1,N);
+  return dp[n]=max(left , right);
 }
 
-void printGraph(vector<pair<int,int>>adj[], int nodes)
+long long int optimalKeys(int N)
 {
-  for(int i=0;i<nodes;i++)
-  {
-    cout<<i<<" -> ";
-    for(auto e:adj[i])
-    cout<<e.first<<" "<<e.second<<" , ";
-    cout<<endl;
-  }
-}
-
-vector<int>SourceToDestination(int V, vector<pair<int,int>> adj[])
-{
-  vector<int>dis(V,INT_MAX);
-  queue<int>q;
-  q.push(0);
-  dis[0]=0;
-  while(!q.empty())
-  {
-    for(auto x : adj[q.front()])
-    {
-      if(dis[q.front()] + x.second < dis[x.first])
-      {
-         dis[x.first] = dis[q.front()] + x.second;
-         q.push(x.first);
-      }
-    }
-    q.pop();
-  }
-  return dis;
+  long long ans=0;
+  ans=max(ans,solve(0,0,0,N));
+  for(auto e:dp)
+  cout<<e<<" ";
+  cout<<endl;
+  return ans;
 }
 
 int main()
 {
-  int nodes,edge;
-  cin>>nodes>>edge;
-  vector<pair<int,int>>adj[nodes];
-  GraphInput(edge,adj);
-  printGraph(adj,nodes);
-  for(auto e:SourceToDestination(nodes,adj))
-  cout<<e<<" ";
+  int n;
+  cin>>n;
+  memset(dp,0,sizeof(dp));
+  cout<<optimalKeys(n);
 }

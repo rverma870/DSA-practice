@@ -31,7 +31,6 @@ void DFS(int node , vector<bool>&vis , vector<int>adj[] ,vector<int>&ans)
     if(vis[e]==false)
     {
       DFS(e,vis,adj,ans);
-
     }
   }
 }

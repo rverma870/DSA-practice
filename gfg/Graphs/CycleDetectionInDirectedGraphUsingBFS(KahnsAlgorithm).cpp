@@ -1,4 +1,4 @@
-//Kanh's Algorithm
+//Kanh's Algorithm for cycle detection;
 #include<bits/stdc++.h>
 using namespace std;
 

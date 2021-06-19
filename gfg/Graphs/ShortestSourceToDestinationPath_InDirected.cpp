@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-
+//shortest path using BFS;
 void GraphInput(int edge,vector<pair<int,int>>adj[])
 {
   for(int i=0; i<edge ; i++)

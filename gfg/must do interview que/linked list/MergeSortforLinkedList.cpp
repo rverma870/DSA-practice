@@ -21,6 +21,7 @@ void print_linked_list(Node * head)
     temp=temp->next;
   }
 }
+
 Node* getMiddle(Node *head , Node *tail)
 {
   Node * fast=head;

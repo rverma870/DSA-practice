@@ -15,7 +15,6 @@ void GraphInput(int edge,vector<int>adj[])
 void dfs(int v, vector<bool>& visited, vector<int>&ans ,vector<int>adj[])
 {
     visited[v] = true;
-
     for (auto i:adj[v])
     {
         if (!visited[i])
@@ -23,6 +22,7 @@ void dfs(int v, vector<bool>& visited, vector<int>&ans ,vector<int>adj[])
     }
     ans.push_back(v);
 }
+
 vector<int> topoSort(int V, vector<int>adj[])
 {
   vector<bool>visited(V,false);
@@ -31,7 +31,6 @@ vector<int> topoSort(int V, vector<int>adj[])
     {
         if (!visited[u])
           dfs(u, visited, ans, adj);
-
     }
     reverse(ans.begin(), ans.end());
     return ans;

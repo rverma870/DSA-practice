@@ -29,7 +29,8 @@ bool dfs(int v, vector<int>& colored,vector<int>adj[])
     }
     return true;
 }
-
+//just to check weather graph contain odd length cycle or not
+//cause only in this case this will not possible;
 bool isBipartite(int V, vector<int>adj[])
 {
   vector<int>colored(V,-1);

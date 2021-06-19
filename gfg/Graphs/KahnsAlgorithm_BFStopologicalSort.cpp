@@ -1,4 +1,4 @@
-//Kanh's Algorithm
+//Kanh's Algorithm topological sort;
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -26,7 +26,7 @@ vector<int> topoSort(int V, vector<int>adj[])
   }
   queue<int>q;
   for(int i=0;i<V;i++)
-    if(inDegree[i]==0)
+    if(inDegree[i]==0)//pushing nodes which have 0 dependency
       q.push(i);
 
   while(!q.empty())

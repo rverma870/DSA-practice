@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
 void GraphInput(int edge,vector<int>adj[])
 {
   for(int i=0; i<edge ; i++)
